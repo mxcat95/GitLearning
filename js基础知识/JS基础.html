@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>JS基础</title>
+	<meta charset="utf-8">
+	<meta name="Author" content="MX扑克猫">
+	<!-- <link rel="stylesheet" href=""> 外联引用CSS文件 -->
+	<!-- <script src=""></script> 外联引用JS文件 -->
+	<style>
+		body{
+		}
+		
+	</style>
+	<script>
+		function bRe (bId,bName,bValue) {
+			console.log("id是：" + bId)
+			console.log("名字是：" + bName)
+			console.log("值是：" + bValue)
+		}
+	</script>
+</head>
+<body>
+	<!-- <input type="text" class="tip" placeholder="请输入华氏度" value>
+	<button class="turn">转换</button>
+	<div class="box"></div><br> -->
+	<!-- 简单的鼠标捕获事件 -->
+	<!-- <input type="button" onclick="alert('你按下了按钮')" value="请按下我"><br><br>
+	<img src="image/1.jpg" alt="校徽" onmouseout="this.src='image/1.jpg'" onclick="this.title='这是新标题'" width="200" height="200" title="这是标题"> -->
+		<input type="button" id="id1" name="老大" value="左边" onclick="bRe(this.id,this.name,this.value)">
+		<input type="button" id="id2" name="老二" value="中间" onclick="bRe(this.id,this.name,this.value)">
+		<input type="button" id="id3" name="老三" value="右边" onclick="bRe(this.id,this.name,this.value)">
+		
+	<script>
+		// 1.访问对象和属性，打印键入信息
+
+		/*
+			alert("这是我的信息！")      弹出提示信息
+			console.log(document.title) // 访问当前页面的title属性
+			document.write(document.lastModified) //  打印输出信息（开发过程中几乎不使用，局限性大）
+			alert(document.lastModified)  // 访问对象的属性(上次修改的时间跟日期)
+		*/
+
+		// 2.创建简单脚本
+
+		/* 
+			// 变量：容器 储存数据（数值，字符串，其它数据类型） 以小驼峰的方式命名 可以直接传递给所调用的方法
+			let netParice = 8.99	// 声明变量并赋值
+			let wallet = "我空了！" 
+			console.log(wallet + "我只剩" + netParice + "块了！");	// 在控制台打印变量
+		*/
+		
+		/* 
+			操作符：
+			算数操作符：+、-、*、/、%（余数）运算
+		*/
+
+		/*	
+			let a = 1
+			let b = 2
+			let c = 3
+			console.log(a+b,c-b,b*c,b/a,c%b)
+			// a++
+			// b--
+			// c *= c
+			// let d = c 
+			// c++ 
+			// c *= c
+			// let e = c 
+			// console.log(a,b,c,d,e)
+
+			console.log(a+b+c/3)
+			console.log((a+b+c)/3) // 运算优先级
+		*/
+		/* 字符串衔接
+			// 摄氏度转换华氏度：
+			let tip = document.querySelector(".tip")
+			let button = document.querySelector(".turn")
+			let box = document.querySelector(".box")
+			button.onclick = function () {
+				if(tip.value === "") {
+					alert("请输入摄氏度！")
+				}
+				else{
+					let cTemp = tip.value  			// 摄氏度
+					console.log(cTemp)
+					let hTemp = ((cTemp*9)/5) + 32		// 华氏度
+					console.log(hTemp);
+					box.innerHTML = `<p>摄氏度是：${cTemp}</p>
+								 	<p>华氏度是：${hTemp}`
+					tip.value = null
+				 }
+			}
+		*/
+
+		/*	
+			// 鼠标捕获事件
+			// onclick事件：
+				// onclick = "js语句"
+			// onmouseover/onmouseout事件
+		*/
+
+		// 3.使用函数：
+
+			// 基本语法：function 函数名 () { JS语句 }
+			// function cube(x,y,z) {
+			// 	return x*y*z
+			// }
+			// let a = 3
+			// 	b = 2
+			// 	c = 4
+			// console.log(cube(a,b,c))
+
+			// 作用域：局部变量（在函数内部声明的变量）	全局变量（作用于全局的，函数外部的变量）
+
+			let a = 10
+			let b = 20
+			function change() {
+				let a = 40
+				b = 30
+				return "a是："+ a + "\nb是：" + b
+			}
+			let c = change()
+			console.log(a)
+			console.log(b)
+			console.log(c);
+	</script>
+</body>
+</html>
