@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM对象和内置对象</title>
+    <style>
+        body,p,h1{
+            margin: 0;
+        }
+        /* #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        } */
+
+        /* 
+            主要内容：
+                交互方式：alert() prompt() confirm()方式
+                getElementById() 选择器
+                innerHTML方式: 获取HTML内容
+                history对象：历史记录
+                location对象：刷新或重定向页面
+                navigator：获取浏览器信息
+                Date对象：获取时间和日期
+                Math对象：简化运算
+         */
+
+         /* 案例：页面刷新读取日期和时间，设置按钮重新刷新 */
+         h1{
+             width: 800px;
+             height: 40px;
+             margin: auto;
+             line-height: 40px;
+             text-align: center;
+             color: #fff;
+             background-color: #000;
+             
+         }
+        .mes{
+            width: 800px;
+            height: 350px;
+            margin: 50px auto 0;
+            color: #fff;
+            background-color: #000;
+        }
+        .new{
+            margin-left: 560px;
+        }
+        .mes > p{
+            font-size: 24px;
+            line-height: 50px;
+            text-align: left;
+        }
+        .pos{
+           position: absolute; 
+           left: 730px;
+        }
+    </style>
+    <script>
+        function tips() {
+            let now = new Date()
+            let mesg = document.querySelector('.mes')
+            mesg.innerHTML += `
+                                <p>年份：${now.getFullYear()}</p>
+                                <p>月份：${now.getMonth()+1}</p>
+                                <p>日期：${now.getDate()}</p>
+                                <p>星期：${now.getDay()}</p>
+                                <p>小时：${now.getHours()}</p>
+                                <p>分钟：${now.getMinutes()}</p>
+                                <p>秒：${now.getSeconds()}</p>
+                                `
+        }
+        function cum() {
+            let now2 = new Date()
+            let mesg = document.querySelector('.mes')
+            let btn = document.querySelector(".pos")
+            btn.onclick = function () {
+                mesg.innerHTML = `<p>${now2.toDateString()} ${now2.toTimeString()}</p>`
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!-- <div id="box">
+        <p>我是一条信息</p>
+    </div>    
+    <button id="go-back">Go back!</button> -->
+    <h1>获取页面刷新日期和时间</h1>
+    <div class="mes"></div>
+    <button class="new" onclick="location.reload(true)">点击刷新</button>
+    <button class="new pos">合并模式</button>
+    <script>
+        tips()
+        cum()
+    </script>
+    <script>
+        // alert("我没有返回值")
+        
+        // function jg() {
+        //     let a = confirm("我的返回值是布尔值吗？")
+        //     console.log(a)
+        //     if(a === true)
+        //         alert("恭喜你答对了！")
+        //     else 
+        //         alert("抱歉你答错了！")    
+        // }
+        // jg()
+
+        //     function jg2() {
+        //         let a = prompt("请创建一个用户名","默认名")
+        //         console.log(a)
+        //          if(a === null) 
+        //              alert("请输入用户名！" + "\n\n检测到输入值为：" + a)
+        //          else 
+        //              alert("恭喜你创建成功！" + "\n\n您的用户名为：" + a)    
+        //      }
+        //      jg2()
+
+        // let box = document.getElementById("box")
+           
+        // // box.onmouseover = function () {
+        // //     box.style.backgroundColor = "green"
+        // //     box.onmouseout = function () {
+        // //         box.style.backgroundColor = "red"
+        // //     }
+        // // }
+        // // console.log(box)
+        
+        // let str = "我是新信息"
+        // box.innerHTML = `<p>${str}</p>`
+        // console.log(box)
+
+        // history.length 用户访问过的页面数量
+        // history方法: 
+        //     history.forward() 下一个页面
+        //     history.back() 上一个页面
+        //     history.go(x) 前进x个页面
+        // window.onload = function(e) {
+        // document.getElementById('go-back').addEventListener('click', e => {
+        //     window.history.back();
+        //  })
+        // }
+        // console.log(history)
+        // console.log(navigator)
+
+        // 创建具有当前日期和时间的data对象
+            // let mydate = new Date()
+            // console.log(mydate)
+            // let year = mydate.getFullYear()
+            // let month = mydate.getMonth()
+            // let date = mydate.getDate()
+            // let day = mydate.getDay()
+            // let hour = mydate.getHours()
+            // let minutes = mydate.getMinutes()
+            // let seconds = mydate.getSeconds()
+
+            // console.log(year)
+            // console.log(month)
+            // console.log(date)
+            // console.log(day)
+            // console.log(hour)
+            // console.log(minutes)
+            // console.log(seconds)
+
+        // 创建指定日期和时间的date对象
+            // let time = new Date(2020,7,9,12,50,30) (数值)
+            // let time1 = new Date("2020, Aug 8,12:36:45") (字符串)
+            // console.log(time1)
+        
+        // 修改时间日期
+            // let day = new Date()
+            // console.log("现在是" + day)
+            // day.setDate(10)
+            // day.setFullYear(2021)
+            // day.setMonth(9)
+            // day.setHours(12)
+            // day.setMinutes(55)
+            // day.setSeconds(45)
+
+            // // console.log("今天被修改成了"+day)
+            // console.log(day.toDateString())
+            // day.setDate(day.getDate()-96)
+            // console.log(day.toDateString())
+            // console.log(day.getMilliseconds())
+            // console.log(day.getTime())
+
+        // 利用Math对象简化运算
+            // console.log(Math)
+            // console.log(Map)
+            // function myRand(num) {
+            //     return Math.round(Math.random()*num)
+            // }
+            // console.log(myRand(100))
+            // function area(x) {
+            //     return Math.round(Math.PI*x*x)
+            // }
+            // // 关键字 with：最适合于Math方式联合使用
+            // with (Math) {
+            //     let sui = round(random()*100)
+            //     let big = max(100,5.4,5,89)
+            //     console.log(sui,big)
+            // }
+            
+     </script>
+</body>
+</html>

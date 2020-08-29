@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字和字符串</title>
+    <style>
+        /* 
+            JS支持的数值和字符串类型；
+            数据类型之间的转换；
+            如何操作字符串；
+         */
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        /*
+            数值：整数、浮点数
+            非数值: NaN：将非数值数据当做数值处理，返回值为NaN
+
+        */
+
+        // isNaN(1) 判断是否为非数值
+        console.log(isNaN(2));
+        
+        // 强制转换字符串为数值：
+        // parseFloat()
+        console.log(parseFloat('76.4 大海的哈师大' ));
+        console.log(parseFloat('阿文化大师大 7'));
+        // parseInt(参数，将指定进制转换为十进制)
+        console.log(parseInt(18.69,10));
+        console.log(parseInt('24px',10));
+        console.log(parseInt(1110,10));
+        console.log(parseInt(1110,2));
+        console.log(parseInt('你好'));
+
+        // isFinite() 判断传入参数是否为无穷大 Infinity
+
+        // 在JS中，>2e53 的数值被称为无穷大，有正负
+
+        console.log(isFinite(22));
+        console.log(isFinite('我是个字符串'));
+        console.log(isFinite(Math.sqrt(-1)));
+
+
+        /*
+            字符串：特定字符集里的字符组成的序列，通常用于保存文本内容
+            定义：单/双引号里面的都是字符串''/""
+            
+            转义序列：以反斜杠\开头的用于特殊功能的字符串序列（换行符，制表符）
+
+            \n: 换行符
+            \t: 制表符
+            \': 单引号
+            \": 双引号
+            \\: 反斜杠
+            \x99: 
+            \u9999: 香
+
+            字符串操作的常用方法：         
+        */
+            // concat: 将字符串拼接起来
+            let str1 = "槿旖是"
+            let str2 = "貔貅"
+            // 方法一：使用 “+”号...
+            console.log(str1+str2);
+            // 方法二：concat()
+            console.log(str1.concat(str2));
+
+            // indexOf/lastIndexOf: 返回子字符串索引
+
+            let a = "wo shi xiao bao bao"
+            console.log(a.indexOf('bao'));
+            console.log(a.indexOf('fox'));
+            console.log(a.indexOf('wo'));
+            console.log(a.lastIndexOf('bao'));
+            console.log(a.lastIndexOf('wo'));
+
+            // replace(): 替换:
+            let str = "我是个字符串"
+            console.log(str);
+            console.log(str.replace("是","不是"));
+
+            // split(): 将字符串分组（数组里面会详细介绍用法）
+            console.log(str.split("是"));
+
+            // substr(m,n): 截取m,n之间的字符串，返回新字符串(m,n之间完整的字符串)
+            let b = "I am a student"
+            console.log(b.substr(9));
+            console.log(b.substr(3,13));
+
+            // substring(m,n): 截取字符（包括m,不包括n）
+            console.log(b.substring(9));
+            console.log(b.substring(3,13));
+
+            // toLowerCase/toUpperCase 大小写转换：
+            console.log(b.toUpperCase());
+            console.log(b.toLowerCase());
+
+            /*
+                 布尔值：只有真和假
+                 0：false
+                 1: true
+                 类假: undefined,null,NaN,0,""
+                 类真：当做true处理的值   
+            */
+            let answer = confirm('您是男生吗？')
+            alert(answer*1)
+
+            // 简单的检测程序：
+            function foo (input) {
+                input = input.toLowerCase()
+                return input.indexOf("fuck")
+            }
+            let mystr = prompt("请输入英文字符")
+
+            let fuck = foo(mystr)
+            if(fuck === -1) {
+                alert("格式正确")
+            }
+            else alert("第"+fuck+"个字符处有非法敏感词'fuck'")
+
+            // !: 非操作符
+
+            let c = false
+            console.log(!c);
+            
+    </script>
+</body>
+</html>

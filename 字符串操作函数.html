@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串操作函数</title>
+    <style>
+        .box,
+        .cssT {
+            overflow: auto;
+            width: 450px;
+            height: 150px;
+            margin: 10px 0;
+            border: 1px solid blue;
+        }
+
+        .cssT > p{
+            margin: 0;
+            height: 40px;
+            font-size: 24px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background-color: #666;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <input type="text" id="instr" placeholder="请输入任意字符串" value>
+    <input type="number" id="innum" placeholder="请输入您想裁切的字符数" value>
+    <button id="cut">裁切</button>
+    <button id="clear">清空</button>
+    <div class="cssT"></div>
+</body>
+
+<script>
+    // 1.从末尾删除给定数目的字符：
+
+    /*思路：
+        1.获取输入的字符串
+        2.获取字符串长度
+        3.利用substring()方法从末尾裁剪指定数目的字符
+    */
+    let box = document.querySelector(".box")
+    let instr = document.querySelector("#instr")
+    let innum = document.querySelector("#innum")
+    let cut = document.querySelector("#cut")
+    let clear = document.querySelector("#clear")
+    let cssT = document.querySelector(".cssT")
+
+    // 裁减函数
+    function cutStr(str, n) {
+
+        if (str.length < n) {
+            alert("请输入小于字符长度的数")
+            return str
+        }
+        else {
+            let newstr = str.substring(0, str.length - n)
+            return newstr
+        }
+    }
+
+    // 裁剪按钮
+    cut.onclick = function () {
+        let mystr = instr.value
+        let mynum = innum.value
+        box.innerHTML += `<p>您输入的字符串是："${mystr}"<br>您想裁切的数目是："${mynum}"</p>`
+        let newStr = cutStr(mystr, mynum)
+        box.innerHTML += `<p>裁剪之后的字符串为："${newStr}"</p>`
+    }
+
+    // 清空按钮
+    clear.onclick = function () {
+        box.innerHTML = ""
+    }
+
+    // 2.让输入的英文字符串首字母大写:
+    /*
+        js方法：
+            1.获取字符串,使用toLowerCase()，转换为小写
+            2.用split()方法将每个单词分组
+            3.利用for循环获取每个单词，并用replace()，toUpperCase()替换首字母大写
+
+        css方法：
+            1.获取字符串
+            2.利用text-transform: capitalize; 首字母大写
+    */
+    let eng = prompt("请输入任意英文句子")
+
+    function toUpp(str) {
+
+        if (str === "") {
+            alert("无法转换空字符！\n刷新页面可重新输入！")
+        }
+        else {
+            // 转化小写，并且以空格分组
+            let Arr = str.toLowerCase().split(" ")
+
+            for (let i = 0; i < Arr.length; i++) {
+
+                // 提取分组中的每个字符串，用replace()方法将首字母替换为大写
+                Arr[i] = Arr[i].replace(Arr[i][0], Arr[i][0].toUpperCase());
+            }
+
+            // 将分组以空格拼接成一个字符串
+            alert("您输入的字符是：\n" + str + "\n首字母大写转换为：\n" + Arr.join(" "))
+        }
+    }
+    toUpp(eng)
+
+    cssT.innerHTML += `<p>${eng}</p>`
+
+</script>
+
+</html>
