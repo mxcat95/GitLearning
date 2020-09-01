@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五星红旗</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: #000;
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            top: 31%;
+            left: 32%;
+            background: linear-gradient(darkblue, skyblue);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="flag" width="600" height="400"></canvas>
+
+    <script>
+        let caVa = document.querySelector('#flag');     // 获取canvas元素
+        let ctx = caVa.getContext('2d');    // 获取canvas渲染上下文
+
+        // 绘制旗杆顶部修饰球
+        ctx.fillStyle = "rgb(150,91,22)";
+        ctx.beginPath();
+        ctx.arc(60,60,8,0,Math.PI,true);
+        ctx.fill();
+        ctx.closePath();
+
+        // 绘制旗杆
+        ctx.fillStyle = "rgb(184,192,195)";
+        ctx.beginPath();
+        ctx.fillRect(52,60,16,340);
+        ctx.moveTo(68,60);
+        ctx.fillStyle = "rgb(254,254,254)";
+        ctx.fillRect(68,60,10,290);
+        ctx.closePath();
+
+        // 绘制红旗主体
+        ctx.fillStyle = "darkred";
+        ctx.beginPath();
+        ctx.fillRect(78,62,480,280);
+        ctx.closePath();
+
+        // 绘制大五角星
+        ctx.fillStyle = "rgb(214,196,61)";
+        ctx.beginPath();
+        let R = 50;     // 外圆半径
+        let r = 20;     // 内圆半径
+        for(let i=0; i<=5; i++){
+            // 与外圆相交的顶点坐标（把角度转化为弧度计算，再加上圆心坐标（自定义））
+            let x = Math.cos((18+i*72)/180*Math.PI)*R+140; 
+            let y = -Math.sin((18+i*72)/180*Math.PI)*R+150;
+            ctx.lineTo(x,y);
+            // 与内圆相交的顶点坐标
+            let m = Math.cos((54+i*72)/180*Math.PI)*r+140;
+            let n = -Math.sin((54+i*72)/180*Math.PI)*r+150;
+            ctx.lineTo(m,n)
+        }
+        ctx.fill();
+        
+
+        // 绘制其余四个小五角星
+        // 第一颗
+        ctx.beginPath();
+        let R1 = 20;  
+        let r1 = 8;     
+        for(let i=0; i<=5; i++){
+            // （-15）：五角星调整角度
+            let x = Math.cos((18+i*72-15)/180*Math.PI)*R1+210; 
+            let y = -Math.sin((18+i*72-15)/180*Math.PI)*R1+90;
+            ctx.lineTo(x,y);
+            let m = Math.cos((54+i*72-15)/180*Math.PI)*r1+210;
+            let n = -Math.sin((54+i*72-15)/180*Math.PI)*r1+90;
+            ctx.lineTo(m,n)
+        }
+        ctx.fill();
+
+        // 第二颗
+        ctx.beginPath();    
+        for(let i=0; i<=5; i++){
+            let x = Math.cos((18+i*72-30)/180*Math.PI)*R1+250; 
+            let y = -Math.sin((18+i*72-30)/180*Math.PI)*R1+120;
+            ctx.lineTo(x,y);
+            let m = Math.cos((54+i*72-30)/180*Math.PI)*r1+250;
+            let n = -Math.sin((54+i*72-30)/180*Math.PI)*r1+120;
+            ctx.lineTo(m,n)
+        }
+        ctx.fill();
+
+        // 第三颗
+        ctx.beginPath();    
+        for(let i=0; i<=5; i++){
+            let x = Math.cos((18+i*72)/180*Math.PI)*R1+250; 
+            let y = -Math.sin((18+i*72)/180*Math.PI)*R1+170;
+            ctx.lineTo(x,y);
+            let m = Math.cos((54+i*72)/180*Math.PI)*r1+250;
+            let n = -Math.sin((54+i*72)/180*Math.PI)*r1+170;
+            ctx.lineTo(m,n)
+        }
+        ctx.fill();
+
+        // 第四颗
+        ctx.beginPath();    
+        for(let i=0; i<=5; i++){
+            let x = Math.cos((18+i*72-15)/180*Math.PI)*R1+210; 
+            let y = -Math.sin((18+i*72-15)/180*Math.PI)*R1+200;
+            ctx.lineTo(x,y);
+            let m = Math.cos((54+i*72-15)/180*Math.PI)*r1+210;
+            let n = -Math.sin((54+i*72-15)/180*Math.PI)*r1+200;
+            ctx.lineTo(m,n)
+        }
+        ctx.fill();
+    </script>
+</body>
+
+</html>
