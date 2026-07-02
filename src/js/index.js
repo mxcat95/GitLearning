@@ -21,7 +21,7 @@ box.onclick = function () {
 btn.onclick = function () {
     if (p.length > 0) {
         box.removeChild(box.childNodes[box.childNodes.length - 1])
-        console.log(p.length)
+        console.log(p.length);
     }
     
 }
